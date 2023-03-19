@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelszó elrejtő</title>
+</head>
+<body>
+    <img src="zart_szem.png" alt="Elrejtett jelszó" title="Jelszó megjelenítése" width="100" height="100" id="szem">
+    <label for="jelszo">Felhasználó jelszava:</label>
+    <input type="password" id="jelszo" placeholder="Kis-, nagybetű és szám" required>
+    <button>Beküldés</button>
+    <script>
+        //addEventListener
+        szem.addEventListener('click', JelszoAllapotMegjelenites);
+
+        function  JelszoAllapotMegjelenites(){
+            let allapot=jelszo.getAttribute("type");
+            if(allapot=="text"){
+                jelszo.setAttribute("type","password");
+                szem.setAttribute("src", "zart_szem.png");
+                szem.setAttribute("alt", "Elrejtett jelszó");
+                szem.setAttribute("title","Jelszó megjelenítése");
+            }
+            else{
+                jelszo.setAttribute("type","text");
+                szem.setAttribute("src", "nyitott_szem.png");
+                szem.setAttribute("alt", "Megjelenített jelszó");
+                szem.setAttribute("title","Jelszó elrejtése");
+            }
+        }
+    </script>
+</body>    
+</html>
