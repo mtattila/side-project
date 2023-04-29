@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevitelimező</title>
+</head>
+<body>
+    
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email">
+<label for="confirm-email">E-mail megerősítése:</label>
+<input type="email" id="confirm-email" name="confirm-email">
+<button id="check-button">Ellenőrzés</button>
+<div id="error-box" style="display: none;"></div>
+
+<script>
+const emailInput = document.getElementById('email');
+const confirmEmailInput = document.getElementById('confirm-email');
+const checkButton = document.getElementById('check-button');
+const errorBox = document.getElementById('error-box');
+
+checkButton.addEventListener('click', () => {
+  const email = emailInput.value.trim();
+  const confirmEmail = confirmEmailInput.value.trim();
+  errorBox.innerHTML = '';
+  errorBox.style.display = 'none';
+
+  if (email === '' && confirmEmail === '') {
+    errorBox.innerHTML = 'Nincs kitöltve egyik mező sem!';
+    errorBox.style.backgroundColor = 'red';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  if (email === '') {
+    errorBox.innerHTML = 'Nincs kitöltve az e-mail mező!';
+    errorBox.style.backgroundColor = 'orange';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  if (confirmEmail === '') {
+    errorBox.innerHTML = 'Nincs kitöltve az e-mail megerősítése mező!';
+    errorBox.style.backgroundColor = 'orange';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  const emailRegex = /^[0-9a-z\.-]+@([0-9a-z-]+\.)+[a-z]{2,4}$/i;
+  if (!emailRegex.test(email)) {
+    errorBox.innerHTML = 'Nem megfelelő az e-mail cím formátuma!';
+    errorBox.style.backgroundColor = 'yellow';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  if (email !== confirmEmail) {
+    errorBox.innerHTML = 'A két mező tartalma nem egyezik!';
+    errorBox.style.backgroundColor = 'red';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  errorBox.innerHTML = 'Adatok rögzítése sikeres!';
+  errorBox.style.backgroundColor = 'green';
+  errorBox.style.display = 'block';
+});
+</script>
+
+</body>
+</html>
+

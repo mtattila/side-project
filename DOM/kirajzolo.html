@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Képkirajzolás</title>
+	<style>
+		#canvas {
+			border: 1px solid black;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body>
+	<label for="x">X koordináta:</label>
+	<input type="number" id="x" value="100"><br>
+
+	<label for="y">Y koordináta:</label>
+	<input type="number" id="y" value="100"><br>
+
+	<button id="draw-btn">Kirajzol</button>
+
+	<canvas id="canvas"></canvas>
+
+	<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+
+		var drawBtn = document.getElementById("draw-btn");
+		drawBtn.addEventListener("click", function() {
+			var x = parseInt(document.getElementById("x").value);
+			var y = parseInt(document.getElementById("y").value);
+
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.fillRect(x, y, 50, 50);
+		});
+	</script>
+</body>
+</html>

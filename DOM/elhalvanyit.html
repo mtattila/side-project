@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Elhalványító kép</title>
+	<style>
+		img {
+			max-width: 100%;
+			transition: opacity 5s ease-in-out;
+		}
+
+		.hidden {
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<button id="toggle-btn">Elhalványít / Visszajelenít</button>
+	<img id="cat-img" src="hidingCat.jpg" alt="Elbújós macska">
+
+	<script>
+		var toggleBtn = document.getElementById("toggle-btn");
+		var catImg = document.getElementById("cat-img");
+
+		toggleBtn.addEventListener("click", function() {
+			if (catImg.style.opacity === "0") {
+				catImg.style.opacity = "1";
+			} else {
+				catImg.style.opacity = "0";
+			}
+		});
+	</script>
+</body>
+</html>

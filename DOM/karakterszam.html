@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Karakterszám</title>
+</head>
+<body>
+	<label for="input">Írjon valamit:</label>
+	<input type="text" id="input" oninput="updateCharacterCount()">
+	<p id="karakterszam">0 karakter</p>
+
+	<script>
+		function updateCharacterCount() {
+			var input = document.getElementById("input");
+			var count = input.value.length;
+			var karakterszam = document.getElementById("karakterszam");
+			karakterszam.innerHTML = count + " karakter";
+		}
+	</script>
+</body>
+</html>
