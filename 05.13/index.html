@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice-Water</title>
+
+    <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+    $("#toggleButton").click(function() {
+        $("#content").slideToggle();
+    });
+});
+  </script>
+ 
+ <script>
+    $(document).ready(function() {
+    $("#beviteliMezo").keyup(function() {
+        var inputText = $(this).val();
+        var charCount = inputText.length;
+        $("#charCount").text(charCount);
+    });
+});
+ </script>
+
+ <script>
+    $(document).ready(function() {
+    $("#toggleButton").click(function() {
+        var inputField = $("#inputField");
+        if (inputField.attr("type") === "password") {
+            inputField.attr("type", "text");
+        } else {
+            inputField.attr("type", "password");
+        }
+    });
+});
+ </script>
+
+</head>
+<body>
+    <button id="toggleButton">Mutat/Elrejt</button>
+<div id="content" style="display: none;">
+    Ez a tartalom el lesz rejtve vagy megjelenik.
+</div>
+
+<input type="text" id="beviteliMezo" />
+<p>Beírt karakterek száma: <span id="charCount">0</span></p>
+
+<input type="password" id="myInputField" />
+<button id="myToggleButton">Mutat/Elrejt</button>
+
+<input type="number" id="beviteliMezo2" />
+<img id="stateImage" src="water.jpg" alt="Víz állapota" width="400px" height="400px"/>
+
+<script>
+    document.getElementById("myToggleButton").addEventListener("click", function() {
+    var inputField = document.getElementById("myInputField");
+    
+    if (inputField.type === "password") {
+        inputField.type = "text";
+    } else {
+        inputField.type = "password";
+    }
+});
+</script>
+
+<p></p>
+<script>
+    document.getElementById("beviteliMezo2").addEventListener("input", function() {
+      var inputValue = parseFloat(this.value);
+      var stateImage = document.getElementById("stateImage");
+  
+      if (inputValue < 0) {
+          stateImage.src = "ice.jpg";
+          stateImage.alt = "Jég";
+    
+      } else if (inputValue > 100) {
+          stateImage.src = "steam.jpg";
+          stateImage.alt = "Gőz";
+      } else {
+          stateImage.src = "water.jpg";
+          stateImage.alt = "Víz";
+      }
+  });
+  </script>
+</body>
+</html>
